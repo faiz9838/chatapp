@@ -8,9 +8,12 @@ const { app, server } = require('./socket/index')
 
 // const app = express()
 app.use(cors({
- origin: "*",
-    credentials: true
-}))
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Add necessary headers
+}));
+
 app.use(express.json())
 app.use(cookiesParser())
 
